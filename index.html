@@ -1,108 +1,164 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Rishit Jain — Strategy & Operations</title>
-<meta name="description" content="Rishit Jain — Strategy & Operations Analyst. Consulting and startup strategy with a focus on execution clarity."/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Rishit Jain — Personal Site</title>
+<meta name="description" content="Rishit Jain — Data Science & AI. Machine Learning, RAG systems and behavioral analytics. Available for internships." />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
-body{
-  margin:0;font-family:Inter,system-ui;background:#06070b;color:#fff;
-}
-a{color:inherit;text-decoration:none}
-.container{max-width:1100px;margin:auto;padding:80px 24px}
-.hero h1{font-size:48px;margin:0}
-.subtitle{margin-top:8px;font-weight:600;color:#cfcfcf}
-.hero p{max-width:820px;margin-top:24px;line-height:1.7;color:#e6e6e6}
-.buttons{margin-top:32px;display:flex;gap:16px;flex-wrap:wrap}
-.btn{
-  padding:12px 20px;border-radius:10px;
-  background:linear-gradient(90deg,#7cfffd,#c78cff);
-  font-weight:700;color:#000
-}
-.btn.ghost{background:transparent;border:1px solid #2a2a2a;color:#fff}
-.badges{margin-top:48px;display:flex;gap:12px;flex-wrap:wrap}
-.badge{
-  padding:10px 14px;border-radius:10px;
-  background:#0e1017;border:1px solid #1f2230;color:#d8d8d8
-}
-.section{margin-top:120px}
-.section h2{font-size:32px;margin-bottom:20px}
-.section p{max-width:900px;line-height:1.7;color:#e0e0e0}
-.case-list{margin-top:24px;display:grid;gap:18px}
-.case{padding:20px;border-radius:14px;background:#0e1017;border:1px solid #1f2230}
-footer{text-align:center;margin:120px 0 40px;color:#8f8f8f}
+  :root{
+    --bg1: #07070a;
+    --muted: rgba(255,255,255,0.85);
+    --neon1: #7CFFFD;
+    --neon2: #C78CFF;
+    --accent: #fff;
+  }
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:var(--bg1);color:var(--accent);-webkit-font-smoothing:antialiased;}
+  /* Slideshow background container */
+  .slideshow{position:fixed;inset:0;z-index:0;overflow:hidden;}
+  .slide{
+    position:absolute;inset:0;background-position:center center;background-size:cover;opacity:0;transition:opacity 1.6s ease;filter:blur(8px) brightness(0.45) saturate(1.05);
+    transform:scale(1.03);
+  }
+  .slide.visible{opacity:1;filter:blur(3px) brightness(0.6) saturate(1.05);transform:scale(1);}
+
+  /* overlay gradient for legibility */
+  .overlay{position:fixed;inset:0;background:linear-gradient(180deg, rgba(2,6,12,0.35), rgba(2,6,12,0.6));z-index:1;pointer-events:none;}
+
+  .wrap{position:relative;z-index:2;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px;box-sizing:border-box;}
+
+  .card{
+    width:min(980px,94%);border-radius:18px;padding:36px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.06);backdrop-filter: blur(8px);
+    box-shadow: 0 12px 40px rgba(2,8,20,0.6);
+    display:flex;gap:26px;align-items:center;flex-wrap:wrap;position:relative;overflow:hidden;
+  }
+
+  .avatar{flex:0 0 140px;height:140px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));}
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  .content{flex:1 1 420px;min-width:220px;color:var(--muted);}
+
+  h1{margin:0;font-size:40px;line-height:1.02;font-weight:800;color:var(--accent);letter-spacing:-0.02em;}
+  .subtitle{margin-top:6px;font-weight:600;color:rgba(255,255,255,0.75);font-size:14px;}
+  p.lead{margin:18px 0 10px;color:rgba(255,255,255,0.88);line-height:1.6;max-width:820px;}
+
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;align-items:center;}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:10px;font-weight:700;color:#080808;text-decoration:none;background:linear-gradient(90deg,var(--neon1),var(--neon2));box-shadow: 0 6px 30px rgba(124,255,253,0.08), 0 3px 8px rgba(199,140,255,0.06);transform:translateZ(0);}
+  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent);box-shadow:none;}
+  .btn svg{width:18px;height:18px;display:block;opacity:0.98;}
+
+  .meta{flex:0 0 210px;min-width:180px;display:flex;flex-direction:column;gap:12px;align-items:flex-end;}
+
+  .chip{padding:10px 14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;border:1px solid rgba(255,255,255,0.04);font-weight:600;color:var(--muted);backdrop-filter: blur(6px);}
+  .tag-available{background:linear-gradient(90deg, rgba(124,255,253,0.08), rgba(199,140,255,0.06));color:var(--accent);box-shadow:0 6px 24px rgba(124,255,253,0.03);}
+
+  footer{width:100%;text-align:center;margin-top:18px;color:rgba(255,255,255,0.6);font-size:13px;position:absolute;left:24px;right:24px;bottom:14px;text-align:center;}
+
+  .underline{height:2px;border-radius:2px;background:linear-gradient(90deg,var(--neon1),var(--neon2));margin-top:10px;margin-bottom:4px;width:90px;}
+
+  @media (max-width:720px){
+    .card{flex-direction:column;align-items:center;text-align:center;padding:26px;}
+    .meta{align-items:center;width:100%}
+    .avatar{flex:0 0 120px;height:120px}
+    h1{font-size:28px}
+  }
 </style>
 </head>
 <body>
-<div class="container">
-  <section class="hero">
-    <h1>Rishit Jain</h1>
-    <div class="subtitle">Strategy & Operations Analyst | Consulting & Startup Strategy Roles</div>
-    <p>
-      I help organizations diagnose why execution breaks down — and decide what to fix next.
-      My work sits at the intersection of strategy, operations, and behavioral analytics,
-      with a focus on clarity in ambiguous business environments.
-    </p>
-    <div class="buttons">
-      <a class="btn" href="RishitJain_KMC.pdf" target="_blank">Resume</a>
-      <a class="btn ghost" href="https://www.linkedin.com/in/rishit-jain-55973b1b0" target="_blank">LinkedIn</a>
-      <a class="btn ghost" href="case-notes.html">Case Notes</a>
-      <a class="btn ghost" href="mailto:rishitjain06@gmail.com">Contact</a>
-    </div>
-    <div class="badges">
-      <div class="badge">🟢 Available for Consulting & Strategy Internships</div>
-      <div class="badge">🎯 Focus: Business Strategy & Operations</div>
-      <div class="badge">📍 India</div>
-    </div>
-  </section>
+  <div class="slideshow" aria-hidden="true">
+    <!-- Default classy images. Replace URLs if you prefer -->
+    <div class="slide visible" style="background-image:url('https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=1600&q=60')"></div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1600&q=60')"></div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1600&q=60')"></div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=60')"></div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=60')"></div>
+  </div>
+  <div class="overlay" aria-hidden="true"></div>
 
-  <section class="section">
-    <h2>About</h2>
-    <p>
-      I am an interdisciplinary analyst with grounding in mathematics, business analytics,
-      and behavioral economics. My core strength lies in breaking down ill-defined problems,
-      identifying decision and execution gaps, and translating complexity into clear,
-      structured insights.
-    </p>
-    <p>
-      I approach problems as strategy cases, not technical tasks — focusing on objectives,
-      incentives, constraints, and trade-offs. I am particularly interested in consulting
-      firms and strategy roles in startups where structured thinking directly informs
-      leadership decisions.
-    </p>
-  </section>
-
-  <section class="section">
-    <h2>How I Approach Problems</h2>
-    <p>
-      Clarify the real objective → Map the system → Identify friction and failure points →
-      Prioritize high-impact levers → Deliver decision-ready recommendations.
-    </p>
-  </section>
-
-  <section class="section">
-    <h2>Selected Case Work</h2>
-    <div class="case-list">
-      <div class="case">
-        <strong>Hospital Operations Management</strong><br/>
-        Operational efficiency, coordination, and accountability redesign.
+  <div class="wrap">
+    <section class="card" role="region" aria-label="Profile card">
+      <div class="avatar" title="Rishit Jain">
+        <img src="Professional_Image.jpg" alt="Rishit Jain profile photo">
       </div>
-      <div class="case">
-        <strong>Decision-Support Knowledge System</strong><br/>
-        Reducing information overload and improving decision clarity.
-      </div>
-      <div class="case">
-        <strong>Behavioral Productivity Analysis</strong><br/>
-        Diagnosing decision fatigue and execution breakdown.
-      </div>
-    </div>
-  </section>
 
-  <footer>
-    © Rishit Jain — Strategy, operations, and decision-making focused.
-  </footer>
-</div>
+      <div class="content">
+        <h1>Rishit Jain</h1>
+        <div class="subtitle">Data Science & AI · Machine Learning · Behavioral Analytics</div>
+        <div class="underline" aria-hidden="true"></div>
+        <p class="lead">
+          Forward-leaning data and AI practitioner with a hybrid foundation in mathematics, machine learning, and consumer behavior. Experienced in RAG systems, building end-to-end AI pipelines, and product-focused data work.
+        </p>
+
+        <div class="actions" role="navigation" aria-label="Primary links">
+          <a class="btn" href="RishitJain_KMC.pdf" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 21h10V7.5L13.5 3H7v18z" stroke="#000" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Resume
+          </a>
+
+          <a class="btn ghost" href="https://www.linkedin.com/in/rishit-jain-55973b1b0" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7H18v-7a2 2 0 0 0-4 0v7h-4v-14h4v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="9" width="4" height="11" rx="1" stroke="currentColor" stroke-width="1.6"/><circle cx="4" cy="4" r="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+            LinkedIn
+          </a>
+
+          <a class="btn" href="https://github.com/Rrishitt" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C7.03 2 3 6.03 3 11c0 4.08 2.64 7.53 6.31 8.74.46.08.63-.2.63-.45 0-.22-.01-.81-.01-1.59-2.57.56-3.11-1.11-3.11-1.11-.42-1.08-1.02-1.37-1.02-1.37-.84-.57.06-.56.06-.56.93.07 1.42.96 1.42.96.82 1.41 2.15 1.01 2.67.77.08-.6.32-1.01.58-1.25-2.05-.23-4.2-1.03-4.2-4.58 0-1.01.36-1.83.95-2.48-.1-.23-.41-1.17.09-2.44 0 0 .78-.25 2.56.95A8.88 8.88 0 0 1 12 6.8c.79.004 1.59.11 2.34.32 1.78-1.2 2.56-.95 2.56-.95.5 1.27.19 2.21.09 2.44.59.65.95 1.46.95 2.48 0 3.56-2.15 4.35-4.2 4.58.33.28.61.83.61 1.67 0 1.2-.01 2.17-.01 2.47 0 .25.17.54.64.45C18.36 18.53 21 15.08 21 11c0-4.97-4.03-9-9-9z" stroke="#000" stroke-width="0.6"/></svg>
+            GitHub
+          </a>
+
+          <a class="btn ghost" href="mailto:rishitjain06@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8.5v7.75A2.75 2.75 0 0 0 5.75 19h12.5A2.75 2.75 0 0 0 21 16.25V8.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 8.5l8.5 6L20 8.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Email
+          </a>
+        </div>
+
+      </div>
+
+      <aside class="meta" aria-label="Meta">
+        <div class="chip tag-available">Available for internships</div>
+        <div class="chip">Domain: Data Science & AI</div>
+        <div class="chip">Based in: India</div>
+      </aside>
+
+      <footer>
+        © <span id="year"></span> Rishit Jain — Available for internships only that lie within my domain and are valuable in terms of learnings.
+      </footer>
+    </section>
+  </div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Background slideshow logic
+  (function(){
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    if(!slides.length) return;
+    let idx = 0;
+    const show = (i)=>{
+      slides.forEach((s,si)=> s.classList.toggle('visible', si===i));
+    };
+    // initial
+    show(0);
+    // cycle every 5s with smooth fade
+    setInterval(()=>{
+      idx = (idx+1) % slides.length;
+      show(idx);
+    }, 5000);
+
+    // pause transitions when not visible to improve perf (optional)
+    document.addEventListener('visibilitychange', ()=>{
+      if(document.hidden) clearInterval(window._slideTimer);
+      else window._slideTimer = setInterval(()=>{ idx=(idx+1)%slides.length; show(idx); }, 5000);
+    });
+    window._slideTimer = setInterval(()=>{ idx=(idx+1)%slides.length; show(idx); }, 5000);
+  })();
+
+  // keyboard focus styles for anchors
+  document.querySelectorAll('a.btn').forEach(a => {
+    a.addEventListener('focus', ()=> a.style.outline = '3px solid rgba(124,255,253,0.12)');
+    a.addEventListener('blur', ()=> a.style.outline = 'none');
+  });
+</script>
 </body>
 </html>
